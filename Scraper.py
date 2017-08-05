@@ -32,7 +32,7 @@ class Parser(HTMLParser):
         attr_string = attr_string[:-1]
 
         self.path.append([tag, attr_string])
-        if self.target.check_path(self.path) or self.target_depth > 0:
+        if self.target_depth > 0 or self.target.check_path(self.path):
             if self.target_depth == 0:
                 self.occurrences.append('')
             self.target_depth += 1
@@ -54,6 +54,7 @@ class Parser(HTMLParser):
 def scrape(url):
     global HEADER_PAYLOAD, TARGET_LIST
     data = requests.get(url, headers=HEADER_PAYLOAD).text
+    print(data)
     results = []
 
     for target in TARGET_LIST:
@@ -65,7 +66,7 @@ TARGET_LIST = [
     Target([['div', 'class="_XWk"']]),  # Enables Featured Snippet Scraping
     Target([['span', 'class="_Tgc"']]),  # Enables Featured Snippet Description Scraping
     Target([['span', 'class="cwcot" id="cwos"']]),  # Enables Calculator Answer Scraping
-    Target([['div', 'class="_sPg"']])  # Forgot why I have this
+    Target([['div', 'class="vk_bk vk_ans"']])  # Enable Time Scraping
 ]
 
 HEADER_PAYLOAD = {  # Enables requests.get() to See the Same Web Page a Browser Does.

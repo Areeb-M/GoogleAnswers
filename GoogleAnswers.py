@@ -29,6 +29,3 @@ def convert_query(query):
     result = result.replace('?', '')
     result = "http://www.google.com/search?q=" + result
     return result
-
-while True:
-    ask(input("Question: "))
