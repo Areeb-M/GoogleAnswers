@@ -51,23 +51,25 @@ class Parser(HTMLParser):
         return self.occurrences
 
 
-def scrape(url, header_payload, targets):
-    data = requests.get(url, headers=header_payload).text
+def scrape(url):
+    global HEADER_PAYLOAD, TARGET_LIST
+    data = requests.get(url, headers=HEADER_PAYLOAD).text
     results = []
 
-    for target in targets:
+    for target in TARGET_LIST:
         results += Parser(target).feed(data)
 
-    for result in results:
-        print(result)
+    return results
 
-targets = [
-    Target([['div', 'class="_sPg"']]),
-    Target([['div', 'class="_XWk"']]),
-    Target([['span', 'class="_Tgc"']])
+TARGET_LIST = [
+    Target([['div', 'class="_XWk"']]),  # Enables Featured Snippet Scraping
+    Target([['span', 'class="_Tgc"']]),  # Enables Featured Snippet Description Scraping
+    Target([['span', 'class="cwcot" id="cwos"']]),  # Enables Calculator Answer Scraping
+    Target([['div', 'class="_sPg"']])  # Forgot why I have this
 ]
 
-payload = {
+HEADER_PAYLOAD = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
 }
+
