@@ -68,7 +68,7 @@ TARGET_LIST = [
     Target([['div', 'class="_sPg"']])  # Forgot why I have this
 ]
 
-HEADER_PAYLOAD = {
+HEADER_PAYLOAD = {  # Enables requests.get() to See the Same Web Page a Browser Does.
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
 }
