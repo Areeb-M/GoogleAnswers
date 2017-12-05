@@ -54,7 +54,7 @@ class Parser(HTMLParser):
 def scrape(url):
     global HEADER_PAYLOAD, TARGET_LIST
     data = requests.get(url, headers=HEADER_PAYLOAD).text
-    start_js = data.index('script')
+    start_js = data.index('/g-section-with-header')
     data = data[0:start_js]
     results = []
 
