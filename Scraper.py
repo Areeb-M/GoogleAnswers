@@ -64,10 +64,10 @@ def scrape(url):
     return results
 
 TARGET_LIST = [
-    Target([['div', 'class="_XWk"']]),  # Enables Featured Snippet Scraping
+    Target([['div', 'class="Z0LcW"']]),  # Enables Featured Snippet Scraping
     Target([['span', 'class="_Tgc"']]),  # Enables Featured Snippet Description Scraping
-    Target([['span', 'class="cwcot" id="cwos"']]),  # Enables Calculator Answer Scraping
-    Target([['div', 'class="vk_bk vk_ans"']])  # Enable Time Scraping
+    Target([['span', 'class="cwcot gsrt" id="cwos"']]),  # Enables Calculator Answer Scraping
+    Target([['div', 'class="vk_bk dDoNo"']])  # Enable Time Scraping
 ]
 
 HEADER_PAYLOAD = {  # Enables requests.get() to See the Same Web Page a Browser Does.
